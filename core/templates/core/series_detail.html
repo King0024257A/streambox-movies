@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>{{ series.title }}</h2>
+<p>{{ series.description }}</p>
+
+{% for ep in episodes %}
+<div class="card my-4">
+    <div class="card-body">
+        <h5>{{ ep.title }}</h5>
+        <div class="video-container">
+            <video width="100%" controls>
+                <source src="{{ ep.episode_file.url }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</div>
+{% empty %}
+<p>No episodes found.</p>
+{% endfor %}
+
+<a href="{% url 'download_series' series.id %}" class="btn btn-success mt-3">📦 Download All Episodes (ZIP)</a>
+{% endblock %}

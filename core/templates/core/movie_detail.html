@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>{{ movie.title }}</h2>
+<p>{{ movie.description }}</p>
+
+<div class="video-container">
+    <video width="100%" controls>
+        <source src="{{ movie.video_file.url }}" type="video/mp4">
+    </video>
+</div>
+<a href="{{ movie.video_file.url }}" class="btn btn-success mt-3" download>⬇️ Download Movie</a>
+{% endblock %}
